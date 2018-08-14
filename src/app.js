@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'normalize.css/normalize.css'
+import "./styles/styles.scss";
 
-const App = () => (
-  <div>
-    <h1>Hello</h1>
-  </div>
-)
+import AppRouter from './routers/AppRouters'
+
 
 const element = document.getElementById('app');
 
-ReactDOM.render(<App />, element);
+ReactDOM.render(<AppRouter />, element);

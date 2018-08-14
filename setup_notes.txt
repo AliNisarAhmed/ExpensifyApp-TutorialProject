@@ -15,3 +15,7 @@ npm install style-loader css-loader --save-dev
 npm install node-sass --save-dev
 
 npm install sass-loader --save-dev
+
+ npm install react-redux --save
+
+ npm install uuid --save

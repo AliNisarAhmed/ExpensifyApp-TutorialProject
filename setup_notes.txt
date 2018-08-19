@@ -19,3 +19,5 @@ npm install sass-loader --save-dev
  npm install react-redux --save
 
  npm install uuid --save
+ 
+ npm install --save redux

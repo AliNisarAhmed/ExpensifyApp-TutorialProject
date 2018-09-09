@@ -9,6 +9,7 @@ const getFilteredExpenses = (expenses, { text, sortBy, startDate, endDate }) => 
     const textMatch = expense.description.toLowerCase().includes(text.toLowerCase());
 
     return startDateMatch && endDateMatch && textMatch;
+    
   }).sort((a, b) => {
     if (sortBy === 'date') {
       return a.createdAt < b.createdAt ? 1: -1;

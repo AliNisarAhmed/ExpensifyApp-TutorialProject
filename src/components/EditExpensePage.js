@@ -6,7 +6,7 @@ const EditExpensePage = (props) => {
 
   return (
     <div>
-      <h1>This is Help Page</h1>
+      <h1>Edit expense page</h1>
     </div>
   );
 };

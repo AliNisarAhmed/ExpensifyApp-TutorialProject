@@ -1,8 +1,10 @@
 import React from 'react';
+import { connect } from "react-redux";
+import ExpenseList from './ExpenseList';
 
-const DashBoardPage = () => (
+const DashBoardPage = ({ expenses }) => (
   <div>
-    <h1>This is the DashBoard Page</h1>
+    <ExpenseList />
   </div>
 );
 

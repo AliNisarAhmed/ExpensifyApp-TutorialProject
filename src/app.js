@@ -28,7 +28,6 @@ store.dispatch(addExpense({
   createdAt: 102
 }));
 
-store.dispatch(setTextFilter('gas'));
 
 const state = store.getState();
 

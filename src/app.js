@@ -8,7 +8,8 @@ import "./styles/styles.scss";
 import configureStore from './store/configureStore';
 import getFilteredExpenses from './selectors/expenses';
 import { addExpense } from './actions/expenses';
-import { setTextFilter } from './actions/filters'
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
 
 
 const store = configureStore();
@@ -28,12 +29,18 @@ store.dispatch(addExpense({
   createdAt: 102
 }));
 
+store.dispatch(addExpense({
+  description: 'Rent',
+  amount: 1500,
+  note: 'Gas bill for the month of September 18',
+  createdAt: 101
+}));
+
 
 const state = store.getState();
 
 const filteredExpenses = getFilteredExpenses(state.expenses, state.filters);
 
-console.log(filteredExpenses);
 
 
 

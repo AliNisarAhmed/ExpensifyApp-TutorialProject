@@ -3,12 +3,16 @@ import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 
 export default class ExpenseForm extends React.Component {
-  state = {
-    description: '',
-    note: '',
-    amount: '',
-    createdAt: moment(),
-    calendarFocused: false
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      description: props.expense ? props.expense.description: '',
+      note: props.expense ? props.expense.note : '',
+      amount: props.expense? (props.expense.amount / 100).toString() : '',
+      createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
+      calendarFocused: false
+    }
   }
 
   onDescriptionChange = (e) => {
@@ -23,23 +27,35 @@ export default class ExpenseForm extends React.Component {
 
   onAmountChange = (e) => {
     const amount = e.target.value;
-    if (amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
+    if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
       this.setState(() => ({ amount }));
     }
   }
 
   onDateChange = (date) => {
-    this.setState(() => ({ date }));
+    if(date) {
+      this.setState(() => ({ createdAt: date }));
+    }
   }
 
   onFocusChange = ({ focused }) => {
     this.setState(() => ({ calendarFocused: focused }));
   }
 
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.props.onFormSubmit({
+      description: this.state.description,
+      amount: parseFloat(this.state.amount, 10) * 100,
+      createdAt: this.state.createdAt.valueOf(),
+      note: this.state.note
+    });
+  }
+
   render() {
     return (
       <div>
-        <form action="">
+        <form onSubmit={this.onSubmit}>
           <input 
             type="text"
             placeholder="Description"
@@ -72,7 +88,9 @@ export default class ExpenseForm extends React.Component {
             isOutsideRange={() => false}
           />
           <br/>
-          <button>Add Expense</button>
+          <button>
+            {this.props.expense ? 'Edit Expense': 'Add Expense'}
+          </button>
         </form>
       </div>
     );

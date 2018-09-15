@@ -23,3 +23,7 @@ npm install sass-loader --save-dev
  npm install uuid --save
  
  npm install moment react-dates --save
+
+ npm install jest --save-dev
+
+ (we run npm test -- --watch to run jest(instead of npm command) in watch mode)

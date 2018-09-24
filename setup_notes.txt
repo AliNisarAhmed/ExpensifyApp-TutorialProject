@@ -27,3 +27,19 @@ npm install sass-loader --save-dev
  npm install jest --save-dev
 
  (we run npm test -- --watch to run jest(instead of npm command) in watch mode)
+
+// Installing enzyme, enzyme-adapter for React 16 and RequestAnimationFrame
+
+ npm i --save-dev enzyme enzyme-adapter-react-16 raf
+
+ // also created src/setupTests.js file to configure enzyme adapter, added code inside it to configure enzyme
+
+ // configure up jest - using setupFiles from jest docs, created jest.config.json in root directory.
+
+ // also modified package.json npm test command so that jest recognizes to pick up the jest config file
+
+
+// below pkg is needed to convert enzyme snapshot to json
+ npm i --save-dev enzyme-to-json
+
+ // We also modified the jest.config.js file to set up snapshot serializeer so that wrapper is automatically converted to json
